@@ -31,14 +31,15 @@ struct GitHelper {
 impl Default for GitHelper {
     fn default() -> Self {
         Self {
-            active_folder: "/home/evelyn/scratch/gittest".to_string(),
-            repo: Some(Repository::open("/home/evelyn/scratch/gittest").unwrap())
+            active_folder: "".to_string(),
+            repo: Some(Repository::open("").unwrap())
         }
     }
 }
 
 impl eframe::App for GitHelper {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+        ctx.set_visuals(colors::nord());
         egui::CentralPanel::default().show(ctx, |ui| {
             ui.heading("wpi fsae git helper");
             ui.horizontal(|ui| {

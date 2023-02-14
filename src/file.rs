@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use crate::egui::*;
 
 pub struct File {
@@ -135,10 +137,7 @@ impl Widget for File {
 
         let frame = frame.unwrap_or_else(|| ui.visuals().button_frame);
 
-        let mut button_padding = ui.spacing().button_padding;
-        if small {
-            button_padding.y = 0.0;
-        }
+        let button_padding = vec2(6.0, 10.0);
 
         let mut text_wrap_width = ui.available_width() - 2.0 * button_padding.x;
         if let Some(image) = image {
@@ -174,7 +173,7 @@ impl Widget for File {
             let visuals = ui.style().interact(&response);
 
             if frame {
-                let fill = fill.unwrap_or(crate::colors::nord4);
+                let fill = fill.unwrap_or(crate::colors::nord2);
                 let stroke = stroke.unwrap_or(visuals.bg_stroke);
                 let rounding = rounding.unwrap_or(visuals.rounding);
                 ui.painter()
